@@ -327,7 +327,7 @@
 								</div>
 							</div>
 					</div>
-					<div class="row">
+					<!--<div class="row">
 							<div class="col-sm-4">
 								<p align="right">Vencimiento: </p>
 							</div>
@@ -336,7 +336,7 @@
 									<input class='vencimiento form-control' type="text" name='vencimiento' placeholder='DD/MM/AAAA' maxlength='10' >
 								</div>
 							</div>
-					</div>
+					</div>-->
 					<div class="row">
 							<div class="col-sm-4">
 								<p align="right">Clientes: </p>
