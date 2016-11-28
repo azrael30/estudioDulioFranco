@@ -1,0 +1,21 @@
+
+
+
+
+
+
+Done
+
+valores fijos
+Cuit sin guiones
+División a mitad de  página
+Sin firma y aclaración, sin nombre de el ni cuit
+Doble fecha: pedido y cobro
+no hay pagos ni interes
+Sin vencimiento
+Por mes
+Cargar en negativo
+Campo comentario
+subtotal en generador
+
+

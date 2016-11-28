@@ -1,0 +1,58 @@
+/*  FUENTES  */
+
+@font-face {
+font-family: 'LatoL';
+font-style: normal;
+font-weight: lighter;
+src: local('Lato-Light'), url('fonts/Lato-Light.ttf') format('truetype');
+}
+@font-face {
+font-family: 'LatoR';
+font-style: normal;
+font-weight: normal;
+src: local('Lato-Regular'), url('fonts/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Neutra';
+font-style: normal;
+font-weight: bold;
+src: local('neutrabold'), url('fonts/neutrabold.ttf') format('truetype');
+}
+body{
+	font-family: 'LatoR';
+	font-size:12px;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Neutra';
+}
+
+.pagina {
+    size: 21cm 29.7cm;
+    margin: auto;
+
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+td{
+	border: solid 1px black;
+	text-align: center;
+	padding: 3px 0px;
+}
+#cuentaCorriente .numero{
+	text-align: right;
+	padding-right: 6%;
+}
+
+#saldoDelEstudio .numero{
+	text-align: right;
+	padding-right: 2%;
+}
+
+#cobroPago .numero{
+	text-align: right;
+	padding-right: 7%;
+}
