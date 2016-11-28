@@ -349,8 +349,8 @@ input:focus, select:focus{
 
 .containerRecibo{
 	margin-left: 20px;
-	width: 750px;
-	max-width: 750px;
+	width: 600px;
+	max-width: 600px;
 }
 
 .alternado-1{
@@ -370,11 +370,14 @@ input:focus, select:focus{
 }
 
 @media print {
+	body{
+		overflow: hidden;
+	}
 .alternado-1{
 	background-color: #F2F2F2 !important;
     -webkit-print-color-adjust: exact; 
 }}
 
 .rowh{
-	margin-top: -10px;
+	margin-top: -23px;
 }

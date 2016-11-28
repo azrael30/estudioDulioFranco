@@ -33,7 +33,7 @@
     </script>
 </head>
 
-<body class='recibo'>
+<body class='recibo' style="overflow-y: hidden; overflow-x: hidden">
 	
 	<?php
 		
@@ -51,11 +51,11 @@
 
 				
 	?>
-	<div class="containerRecibo">
+	<div class="containerRecibo" style=" overflow-y: hidden; overflow-x: hidden">
 		<?php
 			$print = "
 				
-				<div class='rowh'>
+				<div class='row'>
 					<div class='col-xs-4'>
 						<p><b> &nbsp;  &nbsp;  &nbsp; Señor/a:</b> &nbsp; ".getNombreApellido($idCliente)."</p>
 					</div>
@@ -91,7 +91,7 @@
 				$sql = "SELECT * FROM cobro WHERE nroRecibo = '$idRecibo'";
 				$resultado = mysqli_query($conexion,$sql);
 				$alternado = 0;
-				$filas = 14;
+				$filas = 12;
 				while($cobro = mysqli_fetch_assoc($resultado)){
 					$filas --;
 					$obligacion = getDescripcionObligacion($cobro['idObligacion']);
