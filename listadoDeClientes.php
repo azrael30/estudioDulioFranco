@@ -41,7 +41,7 @@
 				while($cliente = mysqli_fetch_assoc($resultado2)){
 					$idCliente = $cliente['idCliente'];
 					echo"<tr>";
-					echo "<td width='15%'>".$idCliente."</td>";
+					echo "<td width='15%'>".getNombreApellido($idCliente)."</td>";
 					foreach ($obligaciones as $obl) {
 						echo"<td width='$width%'>";
 						$sql3 = "SELECT * FROM obligacioncliente WHERE idObligacion = '$obl' AND idCliente = '$idCliente' AND habilitado = 1";
