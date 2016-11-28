@@ -83,6 +83,7 @@ INSERT INTO cliente VALUES("MARMAR","MARIO","MARTELOTTO","20181361450","0000-00-
 INSERT INTO cliente VALUES("MARSAI","SAIBENE  SOC HECHO","MARTELOTTO","30708834706","0000-00-00","","","","","","1","0");
 INSERT INTO cliente VALUES("MAZMAR","MARIANA","MAZZEI","27299620870","0000-00-00","Argentina","","","","","1","0");
 INSERT INTO cliente VALUES("MOLPAT","PATRICIA","MOLLICA","27148339029","0000-00-00","Argentina","","","","","1","0");
+INSERT INTO cliente VALUES("P1","1","Prueba","12345678998","0000-00-00","","","","","","1","0");
 INSERT INTO cliente VALUES("PEREDU","EDUARDO DARIO","PEREZ","23141400029","0000-00-00","Argentino","","","","","1","0");
 INSERT INTO cliente VALUES("PERFLO","FLORENCIA","PEREZ ","23343790244","0000-00-00","Argentina","","","","","1","0");
 INSERT INTO cliente VALUES("PERGUI","GUILLERMO","PEREZ","20144866976","0000-00-00","Argentino","","","","","1","0");
@@ -91,6 +92,7 @@ INSERT INTO cliente VALUES("RUIGUI","GUILLERMO","RUIZ DIAZ","23184908859","0000-
 INSERT INTO cliente VALUES("SAIEDU","EDUARDO","SAIBENE","23164344509","0000-00-00","Argentino","","","","","1","0");
 INSERT INTO cliente VALUES("SINMIG","MIGUEL","SINISI","20934451466","0000-00-00","Italiano","","","","","1","0");
 INSERT INTO cliente VALUES("STEJUA","JUAN","STEFANINI","20082362887","0000-00-00","Argentino","","","","","1","0");
+INSERT INTO cliente VALUES("T1","Francisco","Tusa","20107543164","0000-00-00","","","","","","1","0");
 INSERT INTO cliente VALUES("TORROD","RODOLFO","TORRES","23106000999","0000-00-00","Argentino","","","","","1","0");
 INSERT INTO cliente VALUES("UGAMYR","MYRIAM","UGALDEA","27210953855","0000-00-00","Argentina","","","","","1","0");
 INSERT INTO cliente VALUES("VALYAN","YANINA","VALLEJOS","27300344890","0000-00-00","Argentina","","","","","1","0");
@@ -126,7 +128,7 @@ CREATE TABLE `cobro` (
   KEY `fk_cobro_OCCPeriodo1_idx` (`idPeriodo`,`idObligacion`,`idCliente`),
   KEY `fk_cobro_recibo1_idx` (`nroRecibo`),
   CONSTRAINT `fk_cobro_OCCPeriodo1` FOREIGN KEY (`idPeriodo`, `idObligacion`, `idCliente`) REFERENCES `occperiodo` (`idPeriodo`, `idObligacion`, `idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8;
 
 INSERT INTO cobro VALUES("147","1782.9","0316","IBR","FERANG","16");
 INSERT INTO cobro VALUES("148","115.23","0316","SEGU","FERANG","16");
@@ -152,6 +154,35 @@ INSERT INTO cobro VALUES("179","1200","1216","PATE","DULSUS","22");
 INSERT INTO cobro VALUES("180","499","1216","SEGU","DULSUS","22");
 INSERT INTO cobro VALUES("181","0.9","1016","CLAR","DULALE","23");
 INSERT INTO cobro VALUES("182","1","1116","CLAR","DULALE","23");
+INSERT INTO cobro VALUES("183","500","0916","EDEN","ESTDUL","24");
+INSERT INTO cobro VALUES("184","500","1016","ANBP","T1","25");
+INSERT INTO cobro VALUES("185","400","1116","ANGA","T1","25");
+INSERT INTO cobro VALUES("186","500","1116","AUT","T1","25");
+INSERT INTO cobro VALUES("187","1000","1016","ANBP","T1","26");
+INSERT INTO cobro VALUES("188","200","1016","ANGA","T1","26");
+INSERT INTO cobro VALUES("189","1000","1016","AUT","T1","26");
+INSERT INTO cobro VALUES("190","50","1016","IVA","T1","26");
+INSERT INTO cobro VALUES("191","500","1116","ANBP","T1","26");
+INSERT INTO cobro VALUES("192","100","1116","AUT","T1","26");
+INSERT INTO cobro VALUES("193","4000","1116","CSO","T1","26");
+INSERT INTO cobro VALUES("194","1800","1116","IBR","T1","26");
+INSERT INTO cobro VALUES("195","800","1116","IVA","T1","26");
+INSERT INTO cobro VALUES("196","100","1116","SHIG","T1","26");
+INSERT INTO cobro VALUES("197","100","1116","ANBP","P1","27");
+INSERT INTO cobro VALUES("198","100","1116","ANBP","P1","28");
+INSERT INTO cobro VALUES("199","100","1116","AUT","P1","28");
+INSERT INTO cobro VALUES("200","300","1116","CLAR","P1","28");
+INSERT INTO cobro VALUES("201","1300","1116","OSDE","P1","28");
+INSERT INTO cobro VALUES("202","100","1116","ANBP","P1","29");
+INSERT INTO cobro VALUES("203","0","1116","AUT","P1","29");
+INSERT INTO cobro VALUES("204","0","1116","CLAR","P1","29");
+INSERT INTO cobro VALUES("205","0","1116","OSDE","P1","29");
+INSERT INTO cobro VALUES("206","-200","1116","ANBP","P1","30");
+INSERT INTO cobro VALUES("207","100","1216","ANBP","P1","31");
+INSERT INTO cobro VALUES("208","100","1216","AUT","P1","31");
+INSERT INTO cobro VALUES("209","150","1216","CLAR","P1","31");
+INSERT INTO cobro VALUES("210","200","1216","GAS","P1","31");
+INSERT INTO cobro VALUES("211","1300","1216","OSDE","P1","31");
 
 
 
@@ -184,7 +215,7 @@ CREATE TABLE `cobroprovisorio` (
   PRIMARY KEY (`idCobroProvisorio`,`idPeriodo`,`idObligacion`,`idCliente`,`username`),
   KEY `fk_cobro_OCCPeriodo1_idx` (`idPeriodo`,`idObligacion`,`idCliente`),
   KEY `fk_cobroprovisorio_usuario1_idx` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -246,6 +277,7 @@ CREATE TABLE `obligacioncliente` (
   `idCliente` varchar(10) NOT NULL,
   `idCategoria` varchar(50) DEFAULT NULL,
   `habilitado` tinyint(1) NOT NULL DEFAULT '1',
+  `valor` float DEFAULT NULL,
   PRIMARY KEY (`idObligacion`,`idCliente`),
   KEY `fk_obligacionCliente_cliente1_idx` (`idCliente`),
   KEY `fk_obligacionCliente_categoria1_idx` (`idCategoria`),
@@ -254,91 +286,105 @@ CREATE TABLE `obligacioncliente` (
   CONSTRAINT `fk_obligacionCliente_obligacion1` FOREIGN KEY (`idObligacion`) REFERENCES `obligacion` (`idObligacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO obligacioncliente VALUES("ANBP","BALCLA","","1");
-INSERT INTO obligacioncliente VALUES("ANBP","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("ANBP","TORROD","","1");
-INSERT INTO obligacioncliente VALUES("ANGA","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("ANGA","TORROD","","1");
-INSERT INTO obligacioncliente VALUES("BSPS","BALCLA","","1");
-INSERT INTO obligacioncliente VALUES("BSPS","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("CLAR","DULALE","","1");
-INSERT INTO obligacioncliente VALUES("CLAR","DULNIC","","1");
-INSERT INTO obligacioncliente VALUES("CPBA","DULRAU","","1");
-INSERT INTO obligacioncliente VALUES("CSO","CALVO","","1");
-INSERT INTO obligacioncliente VALUES("CSO","DACMAU","","1");
-INSERT INTO obligacioncliente VALUES("CSO","FERANG","","1");
-INSERT INTO obligacioncliente VALUES("CSO","MOLPAT","","1");
-INSERT INTO obligacioncliente VALUES("CSO","PEREDU","","1");
-INSERT INTO obligacioncliente VALUES("CSO","PERGUI","","1");
-INSERT INTO obligacioncliente VALUES("CSO","PERMAR","","1");
-INSERT INTO obligacioncliente VALUES("CSO","SINMIG","","1");
-INSERT INTO obligacioncliente VALUES("EDEN","DULDUL","","1");
-INSERT INTO obligacioncliente VALUES("EDEN","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("EDEN","DULSUS","","1");
-INSERT INTO obligacioncliente VALUES("EDEN","ESTDUL","","1");
-INSERT INTO obligacioncliente VALUES("GAN","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("IBR","BALCLA","","1");
-INSERT INTO obligacioncliente VALUES("IBR","BERADR","","1");
-INSERT INTO obligacioncliente VALUES("IBR","CAMJUL","","1");
-INSERT INTO obligacioncliente VALUES("IBR","DULDUL","","1");
-INSERT INTO obligacioncliente VALUES("IBR","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("IBR","DULSUS","","1");
-INSERT INTO obligacioncliente VALUES("IBR","FERANG","","1");
-INSERT INTO obligacioncliente VALUES("IBR","FLOPAB","","1");
-INSERT INTO obligacioncliente VALUES("IBR","GRALUI","","1");
-INSERT INTO obligacioncliente VALUES("IBR","LOBLEA","","1");
-INSERT INTO obligacioncliente VALUES("IBR","MAHJOS","","1");
-INSERT INTO obligacioncliente VALUES("IBR","MARSAI","","1");
-INSERT INTO obligacioncliente VALUES("IBR","MAZMAR","","1");
-INSERT INTO obligacioncliente VALUES("IBR","PERFLO","","1");
-INSERT INTO obligacioncliente VALUES("IBR","PERGUI","","1");
-INSERT INTO obligacioncliente VALUES("IBR","PERMAR","","1");
-INSERT INTO obligacioncliente VALUES("IBR","UGAMYR","","1");
-INSERT INTO obligacioncliente VALUES("IBR","VALYAN","","1");
-INSERT INTO obligacioncliente VALUES("IVA","CATCAR","","1");
-INSERT INTO obligacioncliente VALUES("IVA","DULDUL","","1");
-INSERT INTO obligacioncliente VALUES("IVA","FERCLA","","0");
-INSERT INTO obligacioncliente VALUES("MAFI","ESCMAR","","1");
-INSERT INTO obligacioncliente VALUES("MIB","CONEMI","","1");
-INSERT INTO obligacioncliente VALUES("MJCP","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("MONO","BALCLA","","1");
-INSERT INTO obligacioncliente VALUES("MONO","BERADR","","1");
-INSERT INTO obligacioncliente VALUES("MONO","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("MONO","DULNIC","","1");
-INSERT INTO obligacioncliente VALUES("MONO","DULSUS","","1");
-INSERT INTO obligacioncliente VALUES("MONO","FLOPAB","","1");
-INSERT INTO obligacioncliente VALUES("MONO","GRALUI","","1");
-INSERT INTO obligacioncliente VALUES("MONO","MAHJOS","","1");
-INSERT INTO obligacioncliente VALUES("MONO","MARMAR","","1");
-INSERT INTO obligacioncliente VALUES("MONO","MARSAI","","1");
-INSERT INTO obligacioncliente VALUES("MONO","SAIEDU","","1");
-INSERT INTO obligacioncliente VALUES("MONO","UGAMYR","","1");
-INSERT INTO obligacioncliente VALUES("OSDE","DULALE","","1");
-INSERT INTO obligacioncliente VALUES("PATE","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("PATE","DULSUS","","1");
-INSERT INTO obligacioncliente VALUES("SDOM","FIGPAO","","1");
-INSERT INTO obligacioncliente VALUES("SDOM","PERGUI","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","CRINOR","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","DULSUS","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","ESTDUL","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","FERANG","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","MOLPAT","","1");
-INSERT INTO obligacioncliente VALUES("SEGU","SINMIG","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","BLACAR","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","CALVO","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","CILJOR","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","DULSUS","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","FERANG","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","MAHJOS","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","PERGUI","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","PERMAR","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","STEJUA","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","TORROD","","1");
-INSERT INTO obligacioncliente VALUES("SHIG","VALYAN","","1");
-INSERT INTO obligacioncliente VALUES("TELE","ESTDUL","","1");
-INSERT INTO obligacioncliente VALUES("TRED","DULMAR","","1");
-INSERT INTO obligacioncliente VALUES("TRED","ESTDUL","","1");
+INSERT INTO obligacioncliente VALUES("ANBP","BALCLA","","1","");
+INSERT INTO obligacioncliente VALUES("ANBP","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("ANBP","P1","","1","100");
+INSERT INTO obligacioncliente VALUES("ANBP","T1","","1","");
+INSERT INTO obligacioncliente VALUES("ANBP","TORROD","","1","");
+INSERT INTO obligacioncliente VALUES("ANGA","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("ANGA","T1","","1","");
+INSERT INTO obligacioncliente VALUES("ANGA","TORROD","","1","");
+INSERT INTO obligacioncliente VALUES("AUT","P1","","1","100");
+INSERT INTO obligacioncliente VALUES("AUT","T1","","1","");
+INSERT INTO obligacioncliente VALUES("BSPS","BALCLA","","1","");
+INSERT INTO obligacioncliente VALUES("BSPS","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("CLAR","DULALE","","1","");
+INSERT INTO obligacioncliente VALUES("CLAR","DULNIC","","1","");
+INSERT INTO obligacioncliente VALUES("CLAR","P1","","1","150");
+INSERT INTO obligacioncliente VALUES("CPBA","DULRAU","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","CALVO","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","DACMAU","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","FERANG","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","MOLPAT","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","PEREDU","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","PERGUI","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","PERMAR","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","SINMIG","","1","");
+INSERT INTO obligacioncliente VALUES("CSO","T1","","1","");
+INSERT INTO obligacioncliente VALUES("EDEN","DULDUL","","1","");
+INSERT INTO obligacioncliente VALUES("EDEN","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("EDEN","DULSUS","","1","");
+INSERT INTO obligacioncliente VALUES("EDEN","ESTDUL","","1","");
+INSERT INTO obligacioncliente VALUES("GAN","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("GAN","P1","","1","");
+INSERT INTO obligacioncliente VALUES("GAS","P1","","1","200");
+INSERT INTO obligacioncliente VALUES("IBR","BALCLA","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","BERADR","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","CAMJUL","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","DULDUL","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","DULSUS","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","FERANG","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","FLOPAB","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","GRALUI","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","LOBLEA","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","MAHJOS","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","MARSAI","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","MAZMAR","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","PERFLO","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","PERGUI","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","PERMAR","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","T1","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","UGAMYR","","1","");
+INSERT INTO obligacioncliente VALUES("IBR","VALYAN","","1","");
+INSERT INTO obligacioncliente VALUES("IVA","CATCAR","","1","");
+INSERT INTO obligacioncliente VALUES("IVA","DULDUL","","1","");
+INSERT INTO obligacioncliente VALUES("IVA","FERCLA","","0","");
+INSERT INTO obligacioncliente VALUES("IVA","P1","","1","");
+INSERT INTO obligacioncliente VALUES("IVA","T1","","1","");
+INSERT INTO obligacioncliente VALUES("MAFI","ESCMAR","","1","");
+INSERT INTO obligacioncliente VALUES("MIB","CONEMI","","1","");
+INSERT INTO obligacioncliente VALUES("MJCP","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","BALCLA","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","BERADR","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","DULNIC","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","DULSUS","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","FLOPAB","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","GRALUI","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","MAHJOS","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","MARMAR","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","MARSAI","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","SAIEDU","","1","");
+INSERT INTO obligacioncliente VALUES("MONO","UGAMYR","","1","");
+INSERT INTO obligacioncliente VALUES("OSDE","DULALE","","1","");
+INSERT INTO obligacioncliente VALUES("OSDE","P1","","1","1300");
+INSERT INTO obligacioncliente VALUES("PATE","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("PATE","DULSUS","","1","");
+INSERT INTO obligacioncliente VALUES("SDOM","FIGPAO","","1","");
+INSERT INTO obligacioncliente VALUES("SDOM","PERGUI","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","CRINOR","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","DULSUS","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","ESTDUL","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","FERANG","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","MOLPAT","","1","");
+INSERT INTO obligacioncliente VALUES("SEGU","SINMIG","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","BLACAR","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","CALVO","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","CILJOR","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","DULSUS","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","FERANG","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","MAHJOS","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","PERGUI","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","PERMAR","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","STEJUA","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","T1","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","TORROD","","1","");
+INSERT INTO obligacioncliente VALUES("SHIG","VALYAN","","1","");
+INSERT INTO obligacioncliente VALUES("TELE","ESTDUL","","1","");
+INSERT INTO obligacioncliente VALUES("TRED","DULMAR","","1","");
+INSERT INTO obligacioncliente VALUES("TRED","ESTDUL","","1","");
 
 
 
@@ -508,9 +554,12 @@ INSERT INTO occperiodo VALUES("0916","837.4","0","0000-00-00","TRED","DULMAR","1
 INSERT INTO occperiodo VALUES("0916","379","0","0000-00-00","TRED","ESTDUL","1");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","ANBP","BALCLA","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","ANBP","DULMAR","0");
+INSERT INTO occperiodo VALUES("1016","1500","0","0000-00-00","ANBP","T1","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","ANBP","TORROD","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","ANGA","DULMAR","0");
+INSERT INTO occperiodo VALUES("1016","200","0","0000-00-00","ANGA","T1","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","ANGA","TORROD","0");
+INSERT INTO occperiodo VALUES("1016","1000","0","0000-00-00","AUT","T1","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","BSPS","BALCLA","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","BSPS","DULMAR","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","CLAR","DULALE","1");
@@ -538,24 +587,43 @@ INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","IBR","PERMAR","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","IBR","UGAMYR","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","IBR","VALYAN","0");
 INSERT INTO occperiodo VALUES("1016","0","0","0000-00-00","IVA","CATCAR","0");
+INSERT INTO occperiodo VALUES("1016","50","0","0000-00-00","IVA","T1","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","MJCP","DULMAR","0");
 INSERT INTO occperiodo VALUES("1016","400","0","0000-00-00","MONO","DULMAR","0");
+INSERT INTO occperiodo VALUES("1016","2000","0","0000-00-00","MONO","DULSUS","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","PATE","DULSUS","0");
 INSERT INTO occperiodo VALUES("1016","100","0","0000-00-00","SEGU","SINMIG","0");
+INSERT INTO occperiodo VALUES("1016","400","0","0000-00-00","SHIG","DULSUS","0");
 INSERT INTO occperiodo VALUES("1016","1","0","0000-00-00","TELE","ESTDUL","0");
 INSERT INTO occperiodo VALUES("1115","898.53","0","0000-00-00","CSO","MOLPAT","0");
 INSERT INTO occperiodo VALUES("1116","1000","0","0000-00-00","ANBP","DULMAR","0");
+INSERT INTO occperiodo VALUES("1116","100","0","2016-11-21","ANBP","P1","0");
+INSERT INTO occperiodo VALUES("1116","500","0","0000-00-00","ANBP","T1","0");
 INSERT INTO occperiodo VALUES("1116","2000","0","0000-00-00","ANGA","DULMAR","0");
+INSERT INTO occperiodo VALUES("1116","400","0","0000-00-00","ANGA","T1","0");
+INSERT INTO occperiodo VALUES("1116","100","0","2016-11-21","AUT","P1","0");
+INSERT INTO occperiodo VALUES("1116","600","0","0000-00-00","AUT","T1","0");
 INSERT INTO occperiodo VALUES("1116","1","0","0000-00-00","CLAR","DULALE","0");
+INSERT INTO occperiodo VALUES("1116","300","0","2016-11-21","CLAR","P1","0");
+INSERT INTO occperiodo VALUES("1116","4000","0","0000-00-00","CSO","T1","0");
 INSERT INTO occperiodo VALUES("1116","1000","0","0000-00-00","IBR","DULMAR","0");
+INSERT INTO occperiodo VALUES("1116","1800","0","0000-00-00","IBR","T1","0");
+INSERT INTO occperiodo VALUES("1116","800","0","0000-00-00","IVA","T1","0");
 INSERT INTO occperiodo VALUES("1116","2000","0","0000-00-00","MONO","DULMAR","0");
+INSERT INTO occperiodo VALUES("1116","1300","0","2016-11-21","OSDE","P1","0");
 INSERT INTO occperiodo VALUES("1116","3000","0","0000-00-00","PATE","DULMAR","0");
 INSERT INTO occperiodo VALUES("1116","0","0","0000-00-00","SEGU","DULMAR","0");
+INSERT INTO occperiodo VALUES("1116","100","0","0000-00-00","SHIG","T1","0");
 INSERT INTO occperiodo VALUES("1216","1000","0","0000-00-00","ANBP","DULMAR","0");
+INSERT INTO occperiodo VALUES("1216","100","0","2016-11-21","ANBP","P1","0");
+INSERT INTO occperiodo VALUES("1216","100","0","2016-11-21","AUT","P1","0");
 INSERT INTO occperiodo VALUES("1216","2000","0","0000-00-00","BSPS","DULMAR","0");
+INSERT INTO occperiodo VALUES("1216","150","0","2016-11-21","CLAR","P1","0");
 INSERT INTO occperiodo VALUES("1216","150","0","0000-00-00","EDEN","DULSUS","0");
 INSERT INTO occperiodo VALUES("1216","0","0","0000-00-00","GAN","DULMAR","0");
+INSERT INTO occperiodo VALUES("1216","200","0","2016-11-21","GAS","P1","0");
 INSERT INTO occperiodo VALUES("1216","0","0","0000-00-00","MJCP","DULMAR","0");
+INSERT INTO occperiodo VALUES("1216","1300","0","2016-11-21","OSDE","P1","0");
 INSERT INTO occperiodo VALUES("1216","1200","0","0000-00-00","PATE","DULSUS","0");
 INSERT INTO occperiodo VALUES("1216","500","0","0000-00-00","SEGU","DULSUS","0");
 
@@ -726,23 +794,32 @@ INSERT INTO pago VALUES("169","100","2016-10-05","1016","EDEN","DULSUS","PF4759"
 DROP TABLE recibo;
 
 CREATE TABLE `recibo` (
-  `nroRecibo` int(11) NOT NULL AUTO_INCREMENT,
+  `nroRecibo` int(11) NOT NULL,
   `anulado` tinyint(1) NOT NULL DEFAULT '0',
   `username` varchar(30) NOT NULL,
   `fecha` date NOT NULL,
+  `comentario` varchar(200) NOT NULL DEFAULT ' ',
   PRIMARY KEY (`nroRecibo`,`username`),
   KEY `fk_recibo_usuario1_idx` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO recibo VALUES("15","1","nicolas","2016-10-03");
-INSERT INTO recibo VALUES("16","0","nicolas","2016-10-03");
-INSERT INTO recibo VALUES("17","0","nicolas","2016-10-03");
-INSERT INTO recibo VALUES("18","1","empleado","2016-10-03");
-INSERT INTO recibo VALUES("19","1","nicolas","2016-10-05");
-INSERT INTO recibo VALUES("20","0","nicolas","2016-10-05");
-INSERT INTO recibo VALUES("21","0","nicolas","2016-10-05");
-INSERT INTO recibo VALUES("22","0","nicolas","2016-10-07");
-INSERT INTO recibo VALUES("23","0","nicolas","2016-10-07");
+INSERT INTO recibo VALUES("15","1","nicolas","2016-10-03"," ");
+INSERT INTO recibo VALUES("16","0","nicolas","2016-10-03"," ");
+INSERT INTO recibo VALUES("17","0","nicolas","2016-10-03"," ");
+INSERT INTO recibo VALUES("18","1","empleado","2016-10-03"," ");
+INSERT INTO recibo VALUES("19","1","nicolas","2016-10-05"," ");
+INSERT INTO recibo VALUES("20","0","nicolas","2016-10-05"," ");
+INSERT INTO recibo VALUES("21","0","nicolas","2016-10-05"," ");
+INSERT INTO recibo VALUES("22","0","nicolas","2016-10-07"," ");
+INSERT INTO recibo VALUES("23","0","nicolas","2016-10-07"," ");
+INSERT INTO recibo VALUES("24","0","nicolas","2016-10-08"," ");
+INSERT INTO recibo VALUES("25","0","nicolas","2016-11-19"," ");
+INSERT INTO recibo VALUES("26","0","nicolas","2016-11-19"," ");
+INSERT INTO recibo VALUES("27","0","nicolas","2016-11-21"," ");
+INSERT INTO recibo VALUES("28","0","nicolas","2016-11-21"," ");
+INSERT INTO recibo VALUES("29","0","nicolas","2016-11-21"," ");
+INSERT INTO recibo VALUES("30","0","nicolas","2016-11-21","0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 01");
+INSERT INTO recibo VALUES("31","0","nicolas","2016-11-21","Mi comentario");
 
 
 

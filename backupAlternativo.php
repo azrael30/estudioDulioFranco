@@ -61,7 +61,8 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
    
    //save file
 
-   $nombreDelArchivo = 'db-backup-'.getFechaDelSistemaConGuiones().'.sql';
+   //$nombreDelArchivo = 'db-backup-'.getFechaDelSistemaConGuiones().'.sql';
+   $nombreDelArchivo = 'db-backup.sql';
    $ruta='backup/';
    $handle = fopen($ruta.$nombreDelArchivo,'w+');
    fwrite($handle,$return);
@@ -69,8 +70,7 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 
 
 
-   echo $nombreDelArchivo;
-   //echo"<script language='javascript'>window.location='$nombreDelArchivo'</script>";
+   echo"<script language='javascript'>window.location='logout.php'</script>";
 }
 
 

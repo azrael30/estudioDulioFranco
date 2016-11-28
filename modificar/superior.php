@@ -26,7 +26,7 @@
 					}
 						echo "$tipoUsuario"; 
 				echo"
-				&nbsp; &middot; &nbsp; <a id='cerrarsesion' href='logout.php'>Cerrar Sesión</a>
+				&nbsp; &middot; &nbsp; <a id='cerrarsesion' href='backupAlternativo.php'>Cerrar Sesión</a>
 			</p>
 	";
 ?>
