@@ -7,7 +7,7 @@
 			<a href='movimientos.php'><li>
 				<img src='img/ico-ventas.png' width='40px'>MOVIMIENTOS
 				<ul>
-					<a href='cobros.php'><li>&bullet; &nbsp; Cobros</li></a>
+					<a href='cobros.php'><li>&bullet; &nbsp; Pedidos</li></a>
 				</ul>
 				<!--<ul>
 					<a href='pagos.php'><li>&bullet; &nbsp; Pagos</li></a>
