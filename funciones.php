@@ -244,6 +244,9 @@
 		$sql = "SELECT MAX(nroRecibo)+1 FROM recibo";
 		$resultado = mysqli_query($conexion,$sql);
 		$recibo = mysqli_fetch_row($resultado);
+		if($recibo[0]== '501'){
+			$recibo[0] = '1';
+		}
 		return $recibo[0];
 	}
 ?>
